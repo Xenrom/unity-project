@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveDirection;
 
+    public Animator animator;
+
 
     // Update is called once per frame
     void Update()
@@ -22,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
     }
     void Move() {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
