@@ -7,18 +7,19 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
     private Vector2 moveDirection;
-
     public Animator animator;
 
+    public GameObject FireRight;
 
-    // Update is called once per frame
+
     void Update()
     {
-        ProcessInputs();
+        ProcessInputs();{
+        }
     }
       void FixedUpdate() {
         Move();
-    }
+      }
     void ProcessInputs(){
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");

@@ -263,6 +263,7 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1360171317}
   animator: {fileID: 1360171321}
+  FireRight: {fileID: 0}
 --- !u!212 &1360171319
 SpriteRenderer:
   m_ObjectHideFlags: 0
