@@ -6,6 +6,8 @@ public class CameraMovement : MonoBehaviour
 {
     public Transform target;
     public float smoothing;
+
+    
     void Start()
     {
         
