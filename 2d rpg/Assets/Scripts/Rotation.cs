@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-       // Start is called before the first frame update
+    // Main
     private Camera mainCam;
     private Vector3 mousePos;
     public GameObject FireRight;
     public Transform fireTransform;
-    public bool canFire;
     private float timer;
     public float timeBetweenFire;
+    private bool isAnimationCooldown;
+
+
+    //Cursor
+    public Texture2D clickCursorTexture;
+    private Vector2 clickHotSpot = Vector2.zero;
+    public Texture2D defaultCursorTexture;
+    private Vector2 defaultHotSpot = Vector2.zero;
+
+
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Combat targetScript = FindObjectOfType<Combat>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 rotation = mousePos - transform.position;
@@ -28,17 +39,16 @@ public class Rotation : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        if (!canFire){
-            timer += Time.deltaTime;
-            if(timer > timeBetweenFire){
-                canFire = true;
-                timer = 0;
-            }
+        if (Input.GetMouseButtonDown(1) && !isAnimationCooldown){
+            GameObject Fireball = Instantiate(FireRight, fireTransform.position, Quaternion.identity);
+            Destroy (Fireball, 1.0f);
+            isAnimationCooldown = true;
+            Invoke("ResetAnimationCooldown", 0.35f);
         }
-        if (Input.GetMouseButtonDown(0) && canFire){
-            canFire = false;
-            Instantiate(FireRight, fireTransform.position, Quaternion.identity);
-        }
-        
     }
+    private void ResetAnimationCooldown()
+    {
+        isAnimationCooldown = false;
+    }
+
 }
