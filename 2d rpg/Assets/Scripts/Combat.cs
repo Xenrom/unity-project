@@ -5,15 +5,26 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     private Animator animator;
-    private bool isAnimationCooldown;
-
+    public bool isAnimationCooldown;
+    public Texture2D clickCursorTexture;
+    public Vector2 clickHotSpot = Vector2.zero;
+    public Texture2D defaultCursorTexture;
+    public Vector2 defaultHotSpot = Vector2.zero;
     private void Start()
     {
+        Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
         animator = GetComponent<Animator>();
         isAnimationCooldown = false;
+
     }
     private void Update()
     {
+        if (isAnimationCooldown){
+            Cursor.SetCursor(clickCursorTexture, clickHotSpot, CursorMode.Auto);
+        }
+        else if (!isAnimationCooldown){
+                Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
+            }
         if (Input.GetMouseButtonDown(0) && !isAnimationCooldown){
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = mousePosition - (Vector2)transform.position;
@@ -40,7 +51,7 @@ public class Combat : MonoBehaviour
             }
 
             isAnimationCooldown = true;
-            Invoke("ResetAnimationCooldown", 0.35f);
+            Invoke("ResetAnimationCooldown", 0.3f);
         }
     }
     private void ResetAnimationCooldown()
