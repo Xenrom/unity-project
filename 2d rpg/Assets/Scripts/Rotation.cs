@@ -35,9 +35,10 @@ public class Rotation : MonoBehaviour
                 timer = 0;
             }
         }
-        if (Input.GetMouseButtonDown(0) && canFire){
+        if (Input.GetMouseButtonDown(1) && canFire){
             canFire = false;
-            Instantiate(FireRight, fireTransform.position, Quaternion.identity);
+            GameObject Fireball = Instantiate(FireRight, fireTransform.position, Quaternion.identity);
+            Destroy (Fireball, 1.0f);
         }
         
     }
