@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2906548679742128305}
   - component: {fileID: 482387971374915345}
   - component: {fileID: 3163371554450525090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DamageAreaPrefab
   m_TagString: Projectile
   m_Icon: {fileID: 0}
