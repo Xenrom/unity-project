@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooty : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     private Vector3 mousePos;
     private Camera mainCam;
