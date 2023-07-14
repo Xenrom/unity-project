@@ -6,11 +6,11 @@ public class dmgEnemy : MonoBehaviour
 {
      public int damageAmount = 50;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("enemy"))
         {
-            DamageReceiver damageReceiver = other.GetComponent<DamageReceiver>();
+            DamageReceiver damageReceiver = collision.gameObject.GetComponent<DamageReceiver>();
 
                 damageReceiver.TakeDamage(damageAmount);
                 Debug.Log("Enemy has taken " + damageAmount + " damage.");
