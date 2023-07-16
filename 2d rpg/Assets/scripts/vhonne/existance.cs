@@ -9,34 +9,40 @@ public class existance : MonoBehaviour
     // Start is called before the first frame update
     public float health = 100;
 
-    float timer = 0.50f;
+    [Header("animation")]
+    public float death_timer = 0;
     public Animator animator;
-    public AIPath aipath;
-    void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
- 
-    }
+    public bool hasDeathAnimation=false;
+    public string deathAnimationName;
 
+    Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("health", health);
-        if (health <= 0) {
-            aipath.canMove = false;
-            if (timer < 0)
+  
+        if (animator != null) {
+            
+            if (health <= 0)
             {
-                GameObject.Destroy(gameObject);
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
+                if (hasDeathAnimation)
+                    animator.SetBool(deathAnimationName, true);
 
-            BoxCollider2D bc = GetComponent<BoxCollider2D>();
-            bc.enabled = false;
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.Sleep();
+                if (death_timer <= 0)
+                {
+                    GameObject.Destroy(gameObject);
+                    rb.Sleep();
+                }
+                else
+                {
+                    death_timer -= Time.deltaTime;
+                }
+            }
+            
         }
 
     }
