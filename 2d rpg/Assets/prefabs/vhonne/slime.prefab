@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5908597932150005894}
   - component: {fileID: 5908597932150005898}
-  - component: {fileID: 4303521410589358372}
   - component: {fileID: 4937445249325804518}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: enemy(square)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4303521410589358372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908597932150005895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e41d629c2ad6d44b81bb8d861a165d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aipath: {fileID: 0}
-  velocity: {x: 0, y: 0}
 --- !u!95 &4937445249325804518
 Animator:
   serializedVersion: 5
@@ -133,11 +118,12 @@ GameObject:
   - component: {fileID: 5908597933200532638}
   - component: {fileID: 5908597933200532632}
   - component: {fileID: 4139092969961734149}
-  - component: {fileID: 2283951398877442039}
   - component: {fileID: 8563922528835781778}
   - component: {fileID: 1391568917814661017}
-  - component: {fileID: 5376577710470091184}
-  m_Layer: 0
+  - component: {fileID: 8004893804451501293}
+  - component: {fileID: 861914053229967678}
+  - component: {fileID: 767110097725766961}
+  m_Layer: 3
   m_Name: slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -201,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
+  hasAnimator: 0
   target: {fileID: 0}
   animator: {fileID: 0}
   distanceChase: 4
@@ -225,23 +212,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2283951398877442039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5908597933200532633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceae6354e62a33647a64f04d4c598f07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  death_timer: 0.6
-  animator: {fileID: 4937445249325804518}
-  hasDeathAnimation: 1
-  deathAnimationName: dead
 --- !u!61 &8563922528835781778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,7 +280,7 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 0
---- !u!114 &5376577710470091184
+--- !u!114 &8004893804451501293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,10 +289,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 5908597933200532633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ef646ab7ff9f746bd30d4c2ea501ec, type: 3}
+  m_Script: {fileID: 11500000, guid: d65420f15638ba445ba301fdcfd38527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 0
   player: {fileID: 0}
   aipath: {fileID: 1391568917814661017}
   hasAnimation: 1
+--- !u!114 &861914053229967678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908597933200532633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aba0de2055eee9478de036440701ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death_timer: 0
+  animator: {fileID: 0}
+  hasDeathAnimation: 0
+  deathAnimationName: 
+--- !u!114 &767110097725766961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908597933200532633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfe0ecc523ded44ca1cd37ad45e296a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0

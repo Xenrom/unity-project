@@ -5,16 +5,14 @@ using UnityEngine;
 public class DamageReceiver : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public float currentHealth;
 
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
-
-
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
 

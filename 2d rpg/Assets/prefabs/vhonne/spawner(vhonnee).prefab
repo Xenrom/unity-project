@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4932827462610762862}
   - component: {fileID: 4932827462610762861}
-  - component: {fileID: 4932827462610762860}
+  - component: {fileID: 435739229111724080}
   m_Layer: 0
   m_Name: spawner(vhonnee)
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4932827462610762860
+--- !u!114 &435739229111724080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4932827462610762859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ab7e6147c24f2479d3ad2c8409bd8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 45c27f4aa1243b144ad60f6b36319522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnee: {fileID: 5908597933200532633, guid: d12adace4e6964b48beb0eb0fb94b432, type: 3}

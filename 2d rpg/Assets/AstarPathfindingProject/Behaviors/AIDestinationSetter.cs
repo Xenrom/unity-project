@@ -15,12 +15,16 @@ namespace Pathfinding {
 	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_a_i_destination_setter.php")]
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
+		/// 
+		public bool hasAnimator;
 		public Transform target;
 		IAstarAI ai;
 		public Animator animator;
+		public float distanceChase = 4;
+		
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+           if(hasAnimator) animator = GetComponentInChildren<Animator>();
         }
         private void Start()
         {
@@ -42,11 +46,13 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if (Vector2.Distance(transform.position, target.position) <= 4){
+			if (Vector2.Distance(transform.position, target.position) <= distanceChase){
 				if (target != null && ai != null) ai.destination = target.position;
-				animator.SetBool("walking", true);
-			}else if(Vector2.Distance(transform.position,target.position) > 4) {
-				animator.SetBool("walking", false);
+				if (hasAnimator) { animator.SetBool("walking", true); }
+			}else if(Vector2.Distance(transform.position,target.position) > distanceChase) {
+
+				if (hasAnimator) { animator.SetBool("walking", false); }
+			
 			}
 			
 		}

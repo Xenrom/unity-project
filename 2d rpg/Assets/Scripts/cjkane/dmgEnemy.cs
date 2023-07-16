@@ -14,6 +14,7 @@ public class dmgEnemy : MonoBehaviour
 
                 damageReceiver.TakeDamage(damageAmount);
                 Debug.Log("Enemy has taken " + damageAmount + " damage.");
+            Debug.Log(other.name);
 
             Destroy(gameObject);
         }
