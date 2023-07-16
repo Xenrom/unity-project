@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8422176878249840573}
   - component: {fileID: -5138790470914580774}
   - component: {fileID: 5431395521302512520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireRight
   m_TagString: Projectile
   m_Icon: {fileID: 0}
