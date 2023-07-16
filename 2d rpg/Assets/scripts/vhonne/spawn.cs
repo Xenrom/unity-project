@@ -1,63 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class spawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject enemypreFab;
-    float time = 0;
-    float spawnrate = 2;
-    int spawnLimit = 5;
-    [SerializeField] GameObject[] enemy;
-    void Awake()
-    {
-        
-    }
+    public GameObject spawnee;
+    public List<GameObject> enemies;
 
-    // Update is called once per frame
-    void Update()
+    [Header("spawner customable")]
+    public string spawnerName;
+    public int maxEnemy = 5;
+    public float interval = 2;
+
+    float timer = 0;
+    
+
+    private void Update()
     {
-        enemy = GameObject.FindGameObjectsWithTag("enemy");
-        if (time < spawnrate)
+
+        if(timer >= interval && enemies.Count < maxEnemy)
         {
-            time = time + Time.deltaTime;
+            create();
+            timer = 0;
         }
         else
         {
-            
-           if(enemy.Length < spawnLimit)
-            {
-                create();
-                time = 0;
-                print(enemy.Length);
-            }
-           else if (enemy.Length >= spawnLimit)
-            {
-                time = 0;
-            }
-        
-        } 
-    }
-
-    void create()
-    {
-
-        float posy = Random.Range(transform.position.y - 4, transform.position.y + 4);
-        float posx = Random.Range(transform.position.x - 4, transform.position.x + 4);
-        Vector3 enemyPos = new Vector2(posx, posy);
-        foreach (GameObject obj in enemy)
-        {
-            if(obj.transform.position == enemyPos)
-            {
-                posy = Random.Range(transform.position.y - 4, transform.position.y + 4);
-                posx = Random.Range(transform.position.x - 4, transform.position.x + 4);
-                enemyPos = new Vector2(posx, posy);
-            }
+            timer += Time.deltaTime;
         }
 
-        Instantiate(enemypreFab, enemyPos, transform.rotation);
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.RemoveAt(i);
+            }
+        }      
+    }
+
+   private void create()
+    {
+        float xPosLeft = transform.position.x - (transform.localScale.x / 2);
+        float xPosRight = transform.position.x + (transform.localScale.x / 2);
+
+        float yPosLeft =  transform.position.y - (transform.localScale.y / 2);
+        float yPosRight = transform.position.y + (transform.localScale.y / 2);
+
+        GameObject newEnemy = Instantiate(spawnee, new Vector3(Random.Range(xPosLeft, xPosRight), Random.Range(yPosLeft, yPosRight), 0), Quaternion.identity);
+        enemies.Add(newEnemy);
+        
     }
 }
