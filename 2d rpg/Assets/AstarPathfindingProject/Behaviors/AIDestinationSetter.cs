@@ -18,11 +18,12 @@ namespace Pathfinding {
 		public Transform target;
 		IAstarAI ai;
 		public Animator animator;
-		public float distanceChase = 4;
-
-        private void Start()
+        private void Awake()
         {
             animator = GetComponentInChildren<Animator>();
+        }
+        private void Start()
+        {
             GameObject TargetObject = GameObject.FindWithTag("Player");
 			target = TargetObject.transform;
         }
@@ -40,26 +41,14 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
-		void Update()
-		{
-			if (GameObject.FindWithTag("Player") != null)
-			{
-				if (Vector2.Distance(transform.position, target.position) <= distanceChase)
-				{
-					if (target != null && ai != null) ai.destination = target.position;
-
-					if (animator != null) animator.SetBool("walking", true);
-					
-				}
-				else if (Vector2.Distance(transform.position, target.position) > distanceChase)
-				{
-                    if (animator != null) animator.SetBool("walking", false);
-				}
-
-			}else
-			{
-                if (animator != null) animator.SetBool("walking", false);
-            }
+		void Update () {
+			if (Vector2.Distance(transform.position, target.position) <= 4){
+				if (target != null && ai != null) ai.destination = target.position;
+				animator.SetBool("walking", true);
+			}else if(Vector2.Distance(transform.position,target.position) > 4) {
+				animator.SetBool("walking", false);
+			}
+			
 		}
 	}
 }

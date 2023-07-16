@@ -1,55 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class spawn : MonoBehaviour
 {
-    public GameObject spawnee;
-    public List<GameObject> enemies;
-
-    [Header("spawner customable")]
-    public string spawnerName;
-    public int maxEnemy = 5;
-    public float interval = 2;
-
-    float timer = 0;
-    
-
-    private void Update()
+    // Start is called before the first frame update
+    public GameObject enemypreFab;
+    float time = 0;
+    float spawnrate = 2;
+    int spawnLimit = 5;
+    [SerializeField] GameObject[] enemy;
+    void Awake()
     {
+        
+    }
 
-        if(timer >= interval && enemies.Count < maxEnemy)
+    // Update is called once per frame
+    void Update()
+    {
+        enemy = GameObject.FindGameObjectsWithTag("enemy");
+        if (time < spawnrate)
         {
-            create();
-            timer = 0;
+            time = time + Time.deltaTime;
         }
         else
         {
-            timer += Time.deltaTime;
-        }
-
-        for(int i = 0; i < enemies.Count; i++)
-        {
-            if (enemies[i] == null)
+            
+           if(enemy.Length < spawnLimit)
             {
-                enemies.RemoveAt(i);
+                create();
+                time = 0;
+                print(enemy.Length);
             }
-        }      
+           else if (enemy.Length >= spawnLimit)
+            {
+                time = 0;
+            }
+        
+        } 
     }
 
-   private void create()
+    void create()
     {
-        float xPosLeft = transform.position.x - (transform.localScale.x / 2);
-        float xPosRight = transform.position.x + (transform.localScale.x / 2);
 
-        float yPosLeft =  transform.position.y - (transform.localScale.y / 2);
-        float yPosRight = transform.position.y + (transform.localScale.y / 2);
+        float posy = Random.Range(transform.position.y - 4, transform.position.y + 4);
+        float posx = Random.Range(transform.position.x - 4, transform.position.x + 4);
+        Vector3 enemyPos = new Vector2(posx, posy);
+        foreach (GameObject obj in enemy)
+        {
+            if(obj.transform.position == enemyPos)
+            {
+                posy = Random.Range(transform.position.y - 4, transform.position.y + 4);
+                posx = Random.Range(transform.position.x - 4, transform.position.x + 4);
+                enemyPos = new Vector2(posx, posy);
+            }
+        }
 
-        GameObject newEnemy = Instantiate(spawnee, new Vector3(Random.Range(xPosLeft, xPosRight), Random.Range(yPosLeft, yPosRight), 0), Quaternion.identity);
-        enemies.Add(newEnemy);
-        
+        Instantiate(enemypreFab, enemyPos, transform.rotation);
     }
 }
