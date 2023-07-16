@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7038462752089787783}
   - component: {fileID: 7038462752089787784}
   m_Layer: 0
-  m_Name: shooter
+  m_Name: shooter(vhonne0
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
