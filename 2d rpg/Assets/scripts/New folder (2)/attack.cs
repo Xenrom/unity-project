@@ -16,6 +16,7 @@ public class attack : MonoBehaviour
     public float damage;
     public GameObject player;
     public AIPath aipath;
+    public plrDmgReceive healthBar;
 
     bool hitPlayer = false;
     Rigidbody2D rb;
@@ -52,7 +53,8 @@ public class attack : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");  
-        rb = gameObject.GetComponent<Rigidbody2D>();    
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        healthBar = FindObjectOfType<plrDmgReceive>();
 
         if (hasAnimation)
         {
@@ -83,7 +85,7 @@ public class attack : MonoBehaviour
                 timer = 0.617f;
                 
                 aipath.canMove = true;
-                player.GetComponent<plrDmgReceive>().currentHealth -= damage * Time.deltaTime;
+                healthBar.DecreaseHealth(damage);
 
                 if(hasAnimation) animator.SetBool(animationName, false);
             }

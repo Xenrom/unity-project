@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3855772575828887082}
   - component: {fileID: 4742815221419074197}
   - component: {fileID: 9012597740612256024}
+  - component: {fileID: 2536835268383878563}
   m_Layer: 0
   m_Name: bullet(vhonne)
   m_TagString: Untagged
@@ -167,3 +168,19 @@ MonoBehaviour:
   damageAmount: 10
   damageCooldown: 0
   healthBar: {fileID: 0}
+--- !u!58 &2536835268383878563
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451088493412378692}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class leftRight : MonoBehaviour
+public class locker : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    GameObject player;
+    public GameObject player;
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(player.name);
     }
 }

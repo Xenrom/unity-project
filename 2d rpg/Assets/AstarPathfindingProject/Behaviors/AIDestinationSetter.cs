@@ -48,11 +48,15 @@ namespace Pathfinding {
 		void Update () {
 			if (Vector2.Distance(transform.position, target.position) <= distanceChase){
 				if (target != null && ai != null) ai.destination = target.position;
-				if (hasAnimator) { animator.SetBool("walking", true); }
+				if (hasAnimator) 
+					animator.SetBool("walking", true); 
 			}else if(Vector2.Distance(transform.position,target.position) > distanceChase) {
 
-				if (hasAnimator) { animator.SetBool("walking", false); }
-			
+				if (hasAnimator)
+				{
+					animator.SetBool("walking", false);
+					Debug.Log("idle idle idel");
+				}
 			}
 			
 		}

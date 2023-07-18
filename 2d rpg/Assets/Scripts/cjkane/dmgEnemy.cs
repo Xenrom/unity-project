@@ -8,7 +8,7 @@ public class dmgEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("enemy") )
         {
             DamageReceiver damageReceiver = other.GetComponent<DamageReceiver>();
 

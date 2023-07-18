@@ -25,7 +25,7 @@ public class existance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
+    
         if (animator != null) {
             
             if (health.currentHealth <= 0)
