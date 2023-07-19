@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3855772575828887082}
   - component: {fileID: 4742815221419074197}
   - component: {fileID: 9012597740612256024}
-  - component: {fileID: 2536835268383878563}
+  - component: {fileID: -8339496961074383628}
   m_Layer: 0
   m_Name: bullet(vhonne)
   m_TagString: Untagged
@@ -168,7 +168,7 @@ MonoBehaviour:
   damageAmount: 10
   damageCooldown: 0
   healthBar: {fileID: 0}
---- !u!58 &2536835268383878563
+--- !u!58 &-8339496961074383628
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
