@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
+  timePassed: 0
+  timeNeed: 0.5
+  num1: 0.1
 --- !u!114 &5431395521302512520
 MonoBehaviour:
   m_ObjectHideFlags: 0

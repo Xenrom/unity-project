@@ -9,6 +9,7 @@ public class dmgPlayer : MonoBehaviour
     public plrDmgReceive healthBar;
 
     private float lastDamageTime;
+    public shieldSkill shield;
 
     private void Start()
     {
@@ -16,17 +17,18 @@ public class dmgPlayer : MonoBehaviour
         lastDamageTime = -damageCooldown;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit");
+
+            Debug.Log("Hit"); //check
+
             if (Time.time >= lastDamageTime + damageCooldown)
             {
                 if (healthBar != null)
                 {
                     healthBar.DecreaseHealth(damageAmount);
-                    // Handle any other necessary actions when hit by the sprite
                 }
 
                 lastDamageTime = Time.time;
