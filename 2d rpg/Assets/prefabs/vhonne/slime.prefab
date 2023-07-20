@@ -238,7 +238,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8563922528835781778
 BoxCollider2D:
@@ -339,6 +339,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  hasAnimation: 1
+  animator: {fileID: 4937445249325804518}
+  animationName: dead
+  animationTime: 0.617
 --- !u!61 &7320057414627899620
 BoxCollider2D:
   m_ObjectHideFlags: 0

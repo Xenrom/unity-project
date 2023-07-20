@@ -11,6 +11,9 @@ public class move : MonoBehaviour
     float force = 5;
     float timeLimit = 2;
 
+  
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -34,8 +37,12 @@ public class move : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameObject.Destroy (gameObject);    
+        }
     }
+
 }

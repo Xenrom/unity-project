@@ -21,14 +21,17 @@ public class spawn : MonoBehaviour
     private void Update()
     {
 
-        if(timer >= interval && enemies.Count < maxEnemy)
+        if (enemies.Count < maxEnemy)
         {
-            create();
-            timer = 0;
-        }
-        else
-        {
-            timer += Time.deltaTime;
+            if (timer >= interval)
+            {
+                create();
+                timer = 0;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+            }
         }
 
         for(int i = 0; i < enemies.Count; i++)

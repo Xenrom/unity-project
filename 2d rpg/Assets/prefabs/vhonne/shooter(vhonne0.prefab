@@ -335,6 +335,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  hasAnimation: 0
+  animator: {fileID: 0}
+  animationName: 
+  animationTime: 0
 --- !u!58 &-8751351046106698651
 CircleCollider2D:
   m_ObjectHideFlags: 0

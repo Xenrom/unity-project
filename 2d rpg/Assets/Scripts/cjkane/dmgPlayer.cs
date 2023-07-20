@@ -33,4 +33,21 @@ public class dmgPlayer : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Hit");
+            if (Time.time >= lastDamageTime + damageCooldown)
+            {
+                if (healthBar != null)
+                {
+                    healthBar.DecreaseHealth(damageAmount);
+                    // Handle any other necessary actions when hit by the sprite
+                }
+
+                lastDamageTime = Time.time;
+            }
+        }
+    }
 }
