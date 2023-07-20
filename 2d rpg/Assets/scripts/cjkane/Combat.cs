@@ -6,26 +6,25 @@ public class Combat : MonoBehaviour
 {
     private Animator animator;
     public bool isAnimationCooldown;
-    public Texture2D clickCursorTexture;
-    public Vector2 clickHotSpot = Vector2.zero;
-    public Texture2D defaultCursorTexture;
-    public Vector2 defaultHotSpot = Vector2.zero;
+    public float cooldownTime;
+    
     private void Start()
-    {
-        Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
+    {   
         animator = GetComponent<Animator>();
-        isAnimationCooldown = false;
-
+        cooldownTime = 0.35f;
     }
+
     private void Update()
     {
-        if (isAnimationCooldown){
-            Cursor.SetCursor(clickCursorTexture, clickHotSpot, CursorMode.Auto);
+
+        if (cooldownTime < 0.35f){
+            cooldownTime += Time.deltaTime;
         }
-        else if (!isAnimationCooldown){
-                Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
-            }
-        if (Input.GetMouseButtonDown(0) && !isAnimationCooldown){
+
+        Debug.Log(cooldownTime);
+
+        if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
+        {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = mousePosition - (Vector2)transform.position;
             direction.Normalize();
@@ -49,13 +48,8 @@ public class Combat : MonoBehaviour
             {
                 animator.Play("SlashDown");
             }
-
-            isAnimationCooldown = true;
-            Invoke("ResetAnimationCooldown", 0.3f);
+            
+            cooldownTime = 0f;
         }
-    }
-    private void ResetAnimationCooldown()
-    {
-        isAnimationCooldown = false;
     }
 }
