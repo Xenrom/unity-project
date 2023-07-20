@@ -1,36 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Rotation : MonoBehaviour
 {
-    // Main
     private Camera mainCam;
     private Vector3 mousePos;
     public GameObject FireRight;
     public Transform fireTransform;
-    private float timer;
-    public float timeBetweenFire;
-    private bool isAnimationCooldown;
+    public plrDmgReceive playerStat;
+    public float cooldownTime;
 
+    // Add the 'amount' variable and set its value as needed
+    private float amount; // Adjust the amount of mana to decrease when firing Fireball
 
-    //Cursor
-    public Texture2D clickCursorTexture;
-    private Vector2 clickHotSpot = Vector2.zero;
-    public Texture2D defaultCursorTexture;
-    private Vector2 defaultHotSpot = Vector2.zero;
-
-
-    void Start()
+    private void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        Combat targetScript = FindObjectOfType<Combat>();
+        amount = 5f;
+        cooldownTime = 0.35f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 rotation = mousePos - transform.position;
@@ -38,17 +32,18 @@ public class Rotation : MonoBehaviour
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        
+        if (cooldownTime < 0.35f){
+            cooldownTime += Time.deltaTime;
+        }
 
-        if (Input.GetMouseButtonDown(1) && !isAnimationCooldown){
+        if (cooldownTime >= 0.35f && Input.GetMouseButtonDown(1) && playerStat.currentMana >= 5)
+        {
             GameObject Fireball = Instantiate(FireRight, fireTransform.position, Quaternion.identity);
-            Destroy (Fireball, 1.0f);
-            isAnimationCooldown = true;
-            Invoke("ResetAnimationCooldown", 0.35f);
+            Destroy(Fireball, 1.0f);
+            playerStat.DecreaseMana(amount); // Use the 'amount' variable to decrease mana
+            
+            cooldownTime = 0f;
         }
     }
-    private void ResetAnimationCooldown()
-    {
-        isAnimationCooldown = false;
-    }
-
 }

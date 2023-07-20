@@ -9,6 +9,7 @@ public class dmgPlayer : MonoBehaviour
     public plrDmgReceive healthBar;
 
     private float lastDamageTime;
+    public shieldSkill shield;
 
     private void Start()
     {

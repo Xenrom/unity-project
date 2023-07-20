@@ -6,23 +6,24 @@ public class Combat : MonoBehaviour
 {
     private Animator animator;
     public bool isAnimationCooldown;
-    public Texture2D clickCursorTexture;
-    public Vector2 clickHotSpot = Vector2.zero;
-    public Texture2D defaultCursorTexture;
-    public Vector2 defaultHotSpot = Vector2.zero;
-
+    public float cooldownTime;
+    
     private void Start()
-    {
-        Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
+    {   
         animator = GetComponent<Animator>();
-        isAnimationCooldown = false;
+        cooldownTime = 0.35f;
     }
 
     private void Update()
     {
-        bool animationChanged = false;
 
-        if (Input.GetMouseButtonDown(0) && !isAnimationCooldown)
+        if (cooldownTime < 0.35f){
+            cooldownTime += Time.deltaTime;
+        }
+
+        Debug.Log(cooldownTime);
+
+        if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = mousePosition - (Vector2)transform.position;
@@ -47,29 +48,8 @@ public class Combat : MonoBehaviour
             {
                 animator.Play("SlashDown");
             }
-
-            isAnimationCooldown = true;
-            Invoke("ResetAnimationCooldown", 0.3f);
-            animationChanged = true;
+            
+            cooldownTime = 0f;
         }
-
-        // Update the cursor texture only when the animation state changes
-        if (animationChanged)
-        {
-            if (isAnimationCooldown)
-            {
-                Cursor.SetCursor(clickCursorTexture, clickHotSpot, CursorMode.Auto);
-            }
-            else
-            {
-                Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
-            }
-        }
-    }
-
-    private void ResetAnimationCooldown()
-    {
-        isAnimationCooldown = false;
-        Cursor.SetCursor(defaultCursorTexture, defaultHotSpot, CursorMode.Auto);
     }
 }

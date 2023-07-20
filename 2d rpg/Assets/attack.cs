@@ -1,13 +1,10 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class attack : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float damage;
     public GameObject player;
     public Animator animator;
@@ -19,18 +16,14 @@ public class attack : MonoBehaviour
     bool hitPlayer = false;
 
     Rigidbody2D rb;
+
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
         animator = GetComponentInChildren<Animator>();    
         rb = gameObject.GetComponent<Rigidbody2D>();    
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
        if (hitPlayer)
@@ -39,7 +32,8 @@ public class attack : MonoBehaviour
             {
                 aipath.canMove = false;
                 timer -= Time.deltaTime;
-            }else if(timer <= 0)
+            }
+            else if(timer <= 0)
             {
                 hitPlayer = false;
                 timer = 0.617f;
@@ -60,6 +54,7 @@ public class attack : MonoBehaviour
             animator.SetBool("attack", true);
         }
     }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject == player)
@@ -67,7 +62,5 @@ public class attack : MonoBehaviour
             hitPlayer = true;
             animator.SetBool("attack", true);
         }
-    }
-
-    
+    }    
 }
