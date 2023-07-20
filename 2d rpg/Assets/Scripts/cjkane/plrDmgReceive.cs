@@ -124,6 +124,8 @@ public class plrDmgReceive : MonoBehaviour
         currentMana -= amount;
         currentMana = Mathf.Clamp(currentMana, 0f, maxMana);
         UpdateManaBar();
+
+        Debug.Log("e");
     }
 
     public void IncreaseMaxHealth(float amount)

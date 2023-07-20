@@ -21,8 +21,6 @@ public class Combat : MonoBehaviour
             cooldownTime += Time.deltaTime;
         }
 
-        Debug.Log(cooldownTime);
-
         if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
