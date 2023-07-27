@@ -136,6 +136,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+  damagePopUpUI: {fileID: 6911854843312844427, guid: 454c8453756180b4ebd907b0ff946441, type: 3}
+  enemyTransform: {fileID: 0}
+  hasAnimation: 0
+  animator: {fileID: 0}
+  animationName: 
+  animationTime: 0
 --- !u!114 &9012597740612256024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +157,7 @@ MonoBehaviour:
   damageAmount: 10
   damageCooldown: 0
   healthBar: {fileID: 0}
+  shield: {fileID: 0}
 --- !u!58 &-8339496961074383628
 CircleCollider2D:
   m_ObjectHideFlags: 0

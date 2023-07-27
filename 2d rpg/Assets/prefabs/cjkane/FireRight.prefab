@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2650.4082, y: -0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 2b107a9733dd5c34db4db2ca24126bbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -139,8 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 10
   timePassed: 0
-  timeNeed: 0.5
-  num1: 0.1
+  num1: 0.5
 --- !u!114 &5431395521302512520
 MonoBehaviour:
   m_ObjectHideFlags: 0

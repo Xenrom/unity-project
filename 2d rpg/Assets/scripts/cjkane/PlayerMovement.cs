@@ -16,7 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        ProcessInputs();
+        if (!plrDmgReceive.isPaused){
+            ProcessInputs();
+        }
     }
 
     void FixedUpdate()

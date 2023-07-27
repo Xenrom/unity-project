@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5908597932150005898}
   - component: {fileID: 4937445249325804518}
   - component: {fileID: 7620094110699106938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy(square)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8004893804451501293}
   - component: {fileID: 767110097725766961}
   - component: {fileID: 7320057414627899620}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -339,6 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  damagePopUpUI: {fileID: 6911854843312844427, guid: 454c8453756180b4ebd907b0ff946441, type: 3}
+  enemyTransform: {fileID: 0}
   hasAnimation: 1
   animator: {fileID: 4937445249325804518}
   animationName: dead
