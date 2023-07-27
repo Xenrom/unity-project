@@ -7,6 +7,7 @@ public class DamageArea : MonoBehaviour
     public GameObject damageAreaPrefab;
     public float damageCooldown = 1;
     public bool isDamaging = false;
+    public GameObject damagePoint;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +20,7 @@ public class DamageArea : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !isDamaging)
         {
-            GameObject damageArea = Instantiate(damageAreaPrefab, playerPosition, Quaternion.Euler(0, 0, angle));
+            GameObject damageArea = Instantiate(damageAreaPrefab, damagePoint.transform.position, Quaternion.Euler(0, 0, angle));
             Destroy(damageArea, damageCooldown);
             isDamaging = true;
             Invoke("StartDamageCooldown", damageCooldown);

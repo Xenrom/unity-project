@@ -55,7 +55,6 @@ namespace Pathfinding {
 				if (hasAnimator)
 				{
 					animator.SetBool("walking", false);
-					Debug.Log("idle idle idel");
 				}
 			}
 			

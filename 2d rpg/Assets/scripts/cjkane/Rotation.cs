@@ -36,14 +36,15 @@ public class Rotation : MonoBehaviour
         if (cooldownTime < 0.35f){
             cooldownTime += Time.deltaTime;
         }
-
-        if (cooldownTime >= 0.35f && Input.GetMouseButtonDown(1) && playerStat.currentMana >= 5)
-        {
-            GameObject Fireball = Instantiate(FireRight, fireTransform.position, Quaternion.identity);
-            Destroy(Fireball, 1.0f);
-            playerStat.DecreaseMana(amount); // Use the 'amount' variable to decrease mana
-            
-            cooldownTime = 0f;
+        if (!plrDmgReceive.isPaused){
+            if (cooldownTime >= 0.35f && Input.GetMouseButtonDown(1) && playerStat.currentMana >= 5)
+            {
+                GameObject Fireball = Instantiate(FireRight, fireTransform.position, Quaternion.identity);
+                Destroy(Fireball, 1.0f);
+                playerStat.DecreaseMana(amount); // Use the 'amount' variable to decrease mana
+                
+                cooldownTime = 0f;
+            }
         }
     }
 }

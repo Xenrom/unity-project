@@ -4,30 +4,58 @@ using UnityEngine;
 
 public class statsOpen : MonoBehaviour
 {
+        // StatUpgradeUI
     public Canvas canvas;
-    public bool isActive;
+    public static bool isActive;
+
+        // PauseMenuUI
+    public Canvas pauseMenu;
+    public bool isPaused = false;
 
     void Start(){
         canvas.enabled = false;
+        pauseMenu.enabled = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!isActive)
+        if (!isPaused){
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Show Stats");
-                ShowStats();
-                Time.timeScale = 0f;
-                isActive = true;
+                if (!isActive)
+                {
+                    ShowStats();
+                    isActive = true;
+
+                }
+                else
+                {
+                    CloseStats();
+                    isActive = false;
+                }
             }
-            else
+        }
+        if (!plrDmgReceive.gameover){
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Debug.Log("Close Stats");
-                CloseStats();
-                Time.timeScale = 1f;
-                isActive = false;
+                if (!isPaused)
+                {
+                    Debug.Log("Show pause");
+                    ShowPauseMenu();
+                    Time.timeScale = 0f;
+                    isPaused = true;
+
+                    plrDmgReceive.isPaused = true;
+                }
+                else
+                {
+                    Debug.Log("Close pause");
+                    ClosePauseMenu();
+                    Time.timeScale = 1f;
+                    isPaused = false;
+
+                    plrDmgReceive.isPaused = false;
+                }
             }
         }
     }
@@ -39,5 +67,12 @@ public class statsOpen : MonoBehaviour
 
     public void CloseStats(){
         canvas.enabled = false;
+    }
+    public void ShowPauseMenu(){
+        pauseMenu.enabled = true;
+    }
+
+    public void ClosePauseMenu(){
+        pauseMenu.enabled = false;
     }
 }

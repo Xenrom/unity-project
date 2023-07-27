@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7038462751150109500}
   - component: {fileID: 7038462751150109501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7038462752089787784}
   - component: {fileID: 4874065803404170566}
   - component: {fileID: -8751351046106698651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shooter(vhonne0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -335,6 +335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  damagePopUpUI: {fileID: 6911854843312844427, guid: 454c8453756180b4ebd907b0ff946441, type: 3}
+  enemyTransform: {fileID: 7038462752089787779}
   hasAnimation: 0
   animator: {fileID: 0}
   animationName: 

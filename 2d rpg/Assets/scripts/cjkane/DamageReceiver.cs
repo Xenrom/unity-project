@@ -1,9 +1,13 @@
+using System.Threading;
+using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Rendering;
+using TMPro;
+
 
 #if Unity_Editor
 using UnityEditor
@@ -16,8 +20,7 @@ public class DamageReceiver : MonoBehaviour
     [Header("stats")]
     public int maxHealth = 100;
     public float currentHealth;
-
-
+    public GameObject damagePopUpUI;
     //animations
     public bool hasAnimation;
     [HideInInspector, SerializeField] Animator animator;
@@ -32,7 +35,7 @@ public class DamageReceiver : MonoBehaviour
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-
+                          
             DamageReceiver dr = (DamageReceiver)target;
 
             if (dr.hasAnimation)
@@ -51,12 +54,15 @@ public class DamageReceiver : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        rigidbody2 = GetComponent<Rigidbody2D>();
+        GameObject Player = GameObject.Find("Player");
     }
 
     public void TakeDamage(float damageAmount)
     {
+        plrDmgReceive statSystem = FindObjectOfType<plrDmgReceive>();
+
         currentHealth -= damageAmount;
+        damagePopUp(damageAmount);
 
         if (currentHealth <= 0)
         {
@@ -68,10 +74,21 @@ public class DamageReceiver : MonoBehaviour
             }
             else
             {
+                statSystem.IncreaseCurrentExp(5);
                 GameObject.Destroy(gameObject);
             }
             
         }
+    }
+    private void damagePopUp(float amount)
+    {
+        GameObject DmgUI = Instantiate(damagePopUpUI, new UnityEngine.Vector3(transform.position.x,
+                                                        transform.position.y,
+                                                        transform.position.z),
+                                                        UnityEngine.Quaternion.identity);
+        TextMeshPro damageText = DmgUI.GetComponent<TextMeshPro>();
+        damageText.text = amount.ToString("0.#");
+        Destroy(DmgUI, 0.3f);
     }
 
 

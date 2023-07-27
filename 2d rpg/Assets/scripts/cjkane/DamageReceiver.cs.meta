@@ -3,7 +3,10 @@ guid: 9cfe0ecc523ded44ca1cd37ad45e296a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damagePopUpUI: {fileID: 6911854843312844427, guid: 454c8453756180b4ebd907b0ff946441, type: 3}
+  - enemyTransform: {instanceID: 0}
+  - animator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

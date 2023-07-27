@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8125768736593655243}
   - component: {fileID: 8125768736593655244}
   - component: {fileID: 8125768736593655241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: suicider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   damageAmount: 50
   damageCooldown: 1
   healthBar: {fileID: 0}
+  shield: {fileID: 0}
 --- !u!114 &8125768736593655235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  damagePopUpUI: {fileID: 6911854843312844427, guid: 454c8453756180b4ebd907b0ff946441, type: 3}
+  enemyTransform: {fileID: 0}
+  hasAnimation: 0
+  animator: {fileID: 0}
+  animationName: 
+  animationTime: 0
 --- !u!50 &8125768736593655245
 Rigidbody2D:
   serializedVersion: 4

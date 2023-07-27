@@ -30,7 +30,6 @@ public class Shooty : MonoBehaviour
 
         if (timePassed >= 0.1f){
             transform.localScale = transform.localScale + new Vector3(num1, num1, num1);
-            Debug.Log(transform.localScale);
             
             timePassed -= 0.1f;
         }

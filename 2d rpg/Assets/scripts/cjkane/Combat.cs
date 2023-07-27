@@ -16,38 +16,39 @@ public class Combat : MonoBehaviour
 
     private void Update()
     {
-
+        
         if (cooldownTime < 0.35f){
             cooldownTime += Time.deltaTime;
         }
+        if (!plrDmgReceive.isPaused){
+            if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
+            {
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 direction = mousePosition - (Vector2)transform.position;
+                direction.Normalize();
 
-        if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = mousePosition - (Vector2)transform.position;
-            direction.Normalize();
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                float roundedAngle = Mathf.Round(angle / 90) * 90;
 
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float roundedAngle = Mathf.Round(angle / 90) * 90;
-
-            if (roundedAngle == 0)
-            {
-                animator.Play("SlashRight");
+                if (roundedAngle == 0)
+                {
+                    animator.Play("SlashRight");
+                }
+                else if (roundedAngle == 90)
+                {
+                    animator.Play("SlashUp");
+                }
+                else if (roundedAngle == -180 || roundedAngle == 180)
+                {
+                    animator.Play("SlashLeft");
+                }
+                else if (roundedAngle == -90)
+                {
+                    animator.Play("SlashDown");
+                }
+                
+                cooldownTime = 0f;
             }
-            else if (roundedAngle == 90)
-            {
-                animator.Play("SlashUp");
-            }
-            else if (roundedAngle == -180 || roundedAngle == 180)
-            {
-                animator.Play("SlashLeft");
-            }
-            else if (roundedAngle == -90)
-            {
-                animator.Play("SlashDown");
-            }
-            
-            cooldownTime = 0f;
         }
     }
 }
