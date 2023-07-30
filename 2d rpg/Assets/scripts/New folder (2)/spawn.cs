@@ -52,6 +52,7 @@ public class spawn : MonoBehaviour
         float yPosRight = transform.position.y + (transform.localScale.y / 2);
 
         GameObject newEnemy = Instantiate(spawnee, new Vector3(Random.Range(xPosLeft, xPosRight), Random.Range(yPosLeft, yPosRight), 0), Quaternion.identity);
+        newEnemy.transform.parent = transform;
         enemies.Add(newEnemy);
         
     }
