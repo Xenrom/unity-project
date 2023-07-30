@@ -23,16 +23,17 @@ public class shieldSkill : MonoBehaviour
         if (cooldownTime < 5f){
             cooldownTime += Time.deltaTime;
         }
+        if (!plrDmgReceive.isPaused){
+            if (cooldownTime >= 5f && Input.GetMouseButtonDown(2)){
+                Debug.Log("shit");
 
-        if (cooldownTime >= 5f && Input.GetMouseButtonDown(2)){
-            Debug.Log("shit");
-
-            shield.gameObject.SetActive(true);
-            shield2.gameObject.SetActive(true);
-            shield3.gameObject.SetActive(true);
-            shieldAmount = 3f;
-            
-            cooldownTime = 0f;
+                shield.gameObject.SetActive(true);
+                shield2.gameObject.SetActive(true);
+                shield3.gameObject.SetActive(true);
+                shieldAmount = 3f;
+                
+                cooldownTime = 0f;
+            }
         }
         if (shieldAmount > 0){
             statSystem.canDamage = false;

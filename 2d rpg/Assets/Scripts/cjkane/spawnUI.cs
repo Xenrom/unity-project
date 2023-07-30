@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using CodeMonkey.Utils;
 
 public class spawnUI : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject dmg;
+    public GameObject atk_Flame;
     public Transform target;
 
     void Start()
@@ -32,6 +34,8 @@ public class spawnUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)){
+            GameObject flame = Instantiate(atk_Flame, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+        }
     }
 }

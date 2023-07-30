@@ -20,7 +20,7 @@ public class Combat : MonoBehaviour
         if (cooldownTime < 0.35f){
             cooldownTime += Time.deltaTime;
         }
-        if (!plrDmgReceive.isPaused){
+        if (!plrDmgReceive.isPaused && !rockSkill.isRock && !Rotation.isFlame){
             if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

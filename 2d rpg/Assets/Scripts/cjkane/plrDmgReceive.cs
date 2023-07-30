@@ -114,7 +114,7 @@ public class plrDmgReceive : MonoBehaviour
             regenTimer1 -= 0.5f;
         }
 
-        if (isPaused){
+        if (isPaused && gameover == true){
             if (Input.GetMouseButtonDown(0)){
                 clickLabel.enabled = false;
                 countText.enabled = true;
