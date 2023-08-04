@@ -20,9 +20,11 @@ public class Combat : MonoBehaviour
         if (cooldownTime < 0.35f){
             cooldownTime += Time.deltaTime;
         }
-        if (!plrDmgReceive.isPaused && !rockSkill.isRock && !Rotation.isFlame){
+        if (!plrDmgReceive.isPaused){
             if (Input.GetMouseButtonDown(0) && cooldownTime >= 0.35f)
             {
+                dmgEnemy.damageAmount = 30 + 20;
+
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 direction = mousePosition - (Vector2)transform.position;
                 direction.Normalize();

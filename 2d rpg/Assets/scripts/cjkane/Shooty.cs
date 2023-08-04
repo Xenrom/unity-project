@@ -7,12 +7,15 @@ public class Shooty : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
-    public float timePassed;
-
-    public float scale;
     public float force;
-    
-    void Start()
+
+    private float startTime;
+    public float scaleDuration = 3.0f; // Total duration for the scaling effect
+
+    private float damageIncreaseTimer = 0.0f;
+    private float damageIncreaseInterval = 0.1f;
+
+    private void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
@@ -21,27 +24,27 @@ public class Shooty : MonoBehaviour
         Vector3 rotation = transform.position - mousePos;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0,0, rot + 180);
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
 
+        startTime = Time.time; // Record the start time
         Debug.Log("started");
+        dmgEnemy.damageAmount = 30;
     }
 
-    private void Update(){
-        timePassed += Time.deltaTime;
-
-        Debug.Log(Rotation.flameSize);
-
-        if (timePassed >= 0.2f && !Rotation.isUp){
-            transform.localScale = transform.localScale + new Vector3(scale, scale, scale);
-            
-            timePassed -= 0.2f;
+    private void Update()
+    {   
+            damageIncreaseTimer += Time.deltaTime;
+        if (damageIncreaseTimer >= damageIncreaseInterval)
+        {
+            dmgEnemy.damageAmount += 3;
+            damageIncreaseTimer = 0.0f; // Reset the timer
         }
-
-        if (Rotation.isUp){
-            Animator animator = transform.GetComponent<Animator>();
-            animator.SetBool("isFired", true);
-        }
+        float elapsedTime = Time.time - startTime;
+        
+        // Calculate the scaling factor based on time
+        float scaleFactor = Mathf.Lerp(1.0f, 2.0f, elapsedTime / scaleDuration);
+        
+        // Apply the scaling
+        transform.localScale = Vector3.one * scaleFactor;
     }
 }
-
-

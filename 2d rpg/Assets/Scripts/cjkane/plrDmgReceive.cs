@@ -236,7 +236,7 @@ public class plrDmgReceive : MonoBehaviour
     private void LevelUp()
     {
         currentLevel++; // Increase the level
-        statPoint++;
+        statPoint += 3;
 
         currentExp -= requiredExp; // Reset currentExp for next level
         requiredExp = Mathf.RoundToInt(requiredExp * expMultiplier);// Increase the required experience for the next level

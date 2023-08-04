@@ -6,7 +6,7 @@ using UnityEngine;
 public class dmgEnemy : MonoBehaviour
 {
 
-     public int damageAmount = 50;
+     public static int damageAmount = 30;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

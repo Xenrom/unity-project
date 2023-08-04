@@ -138,9 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579ec617d32433f4c99401cd8e449ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
-  timePassed: 0
-  num1: 0.1
+  force: 3
+  scaleDuration: 3
 --- !u!114 &5431395521302512520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a3df4fe6e9aea48bddb1cb42f3e6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 50
 --- !u!95 &544227245344903430
 Animator:
   serializedVersion: 5

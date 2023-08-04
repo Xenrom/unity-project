@@ -35,26 +35,19 @@ public class statsOpen : MonoBehaviour
                 }
             }
         }
-        if (!plrDmgReceive.gameover){
+        if (!plrDmgReceive.gameover)
+        {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!isPaused)
                 {
                     Debug.Log("Show pause");
                     ShowPauseMenu();
-                    Time.timeScale = 0f;
-                    isPaused = true;
-
-                    plrDmgReceive.isPaused = true;
                 }
                 else
                 {
                     Debug.Log("Close pause");
                     ClosePauseMenu();
-                    Time.timeScale = 1f;
-                    isPaused = false;
-
-                    plrDmgReceive.isPaused = false;
                 }
             }
         }
@@ -70,9 +63,17 @@ public class statsOpen : MonoBehaviour
     }
     public void ShowPauseMenu(){
         pauseMenu.enabled = true;
+
+        isPaused = true;
+        Time.timeScale = 0f;
+        plrDmgReceive.isPaused = true;
     }
 
     public void ClosePauseMenu(){
         pauseMenu.enabled = false;
+        
+        isPaused = false;
+        Time.timeScale = 1f;
+        plrDmgReceive.isPaused = false;
     }
 }
